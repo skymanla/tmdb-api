@@ -1,16 +1,15 @@
 package kr.trigger.tmdb_api.dto.tmdb
 
 import com.google.gson.annotations.SerializedName
-import retrofit2.http.QueryName
 
-class DiscoveryMovieDTO(
+data class DiscoveryMovieDTO(
     val page: Int,
     @SerializedName("total_pages") val totalPages: Int,
     @SerializedName("total_results") val totalResults: Int,
     val results: List<DiscoveryMovieResults>
 )
 
-class DiscoveryMovieResults(
+data class DiscoveryMovieResults(
     val adult: Boolean,
     @SerializedName("backdrop_path") val backdropPath: String,
     @SerializedName("genre_ids") val genreIds: List<Int>,
