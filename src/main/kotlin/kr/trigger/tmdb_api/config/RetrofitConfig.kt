@@ -5,12 +5,16 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import okhttp3.OkHttpClient
 import org.springframework.beans.factory.annotation.Qualifier
+import org.springframework.beans.factory.annotation.Value
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 @Configuration
 class RetrofitConfig {
+    @Value("\${tmdb.api.key}")
+    private lateinit var tmdbApiKey: String
+
     @Bean("okhttpClient")
     fun okhttpClient(): OkHttpClient {
         return OkHttpClient()
@@ -31,7 +35,7 @@ class RetrofitConfig {
                 writeTimeout(10, TimeUnit.SECONDS)
                 readTimeout(10, TimeUnit.SECONDS)
             }
-            .addInterceptor(BearerTokenInterceptor())
+            .addInterceptor(BearerTokenInterceptor(tmdbApiKey))
             .build()
     }
 

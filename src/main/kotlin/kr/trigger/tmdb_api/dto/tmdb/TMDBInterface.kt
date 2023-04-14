@@ -30,7 +30,7 @@ interface TMDBInterface {
 
     @GET("movie/{id}")
     fun getMovieDetails(
-        @Path("id") id: Int,
+        @Path("id") id: Long,
         @Query("language") language: String = "ko-KR"
     ): Call<MovieDetailsDTO>
 
