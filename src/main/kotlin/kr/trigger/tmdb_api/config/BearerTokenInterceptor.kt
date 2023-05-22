@@ -6,7 +6,6 @@ import okhttp3.Response
 import org.springframework.beans.factory.annotation.Value
 
 class BearerTokenInterceptor(
-    @Value("\${tmdb.api.key}")
     private var tmdbApiKey: String
 ): Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
